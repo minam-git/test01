@@ -6,6 +6,7 @@
 var drawing = false
 var last_x = null
 var last_y = null
+var hue = 0
 var canvas = document.getElementById('stage')
 var ctx = canvas.getContext('2d')
 function resize() {
@@ -31,15 +32,22 @@ function drawStart(event) {
 }
 canvas.addEventListener('mousemove', drawLine, false)
 canvas.addEventListener('touchmove', drawLine, false)
+
 function drawLine(event) {
 	if(!drawing) return
 	if(event.type==='touchmove') event = event.changedTouches[0]
+/*
 	ctx.strokeStyle =
 		'rgb('+
 		(Math.floor(Math.random()*255)) + ',' +
 		(Math.floor(Math.random()*255)) + ',' +
 		(Math.floor(Math.random()*255)) + ')'
 	;
+*/
+    // 色相を1度ずつ増やし、360度を超えたら0に戻す
+    hue = (hue + 8) % 360;
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
 	ctx.beginPath()
 	ctx.moveTo(last_x, last_y)
 	ctx.lineTo(event.pageX, event.pageY)
