@@ -9,16 +9,17 @@ var last_y = null
 var last2_x = null
 var last2_y = null
 var hue = 0
+var hue2 = 0;
 var canvas = document.getElementById('stage')
 var ctx = canvas.getContext('2d')
 function resize() {
 	canvas.setAttribute('width', window.innerWidth*2)
 	canvas.setAttribute('height', window.innerHeight*2)
 	ctx.font = '30px serif'
-	ctx.fillText('PWAサンプルアプリ', 20, 40)
-	ctx.font = '25px serif'
-	ctx.fillText('マウスや指タッチで線が描けるよ！', 15, 80)
-	ctx.lineWidth = 5
+	ctx.fillText('Rainbow Draw', 20, 40)
+//	ctx.font = '25px serif'
+//	ctx.fillText('マウスや指タッチで線が描けるよ！', 15, 80)
+	ctx.lineWidth = 10
 	ctx.scale(2, 2)
 }
 resize()
@@ -45,7 +46,8 @@ function drawLine(event) {
     const y = event.pageY - canvas.offsetTop;
 
     // 色相を1度ずつ増やし、360度を超えたら0に戻す
-    hue = (hue + 8) % 360;
+    hue = ((hue + 8) % 360);
+    hue2 = 360 - hue;
     ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
     // 中間点を計算して滑らかな線を描く
