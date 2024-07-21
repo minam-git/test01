@@ -24,12 +24,12 @@ body {
 }
 
 #controls button {
-    margin-left: 15px; /* ボタンとその他の要素との間隔 */
+    margin-left: 2px; /* ボタンとその他の要素との間隔 */
+    margin-right: 12px; /* ボタンとその他の要素との間隔 */
     padding: 5px 5px; /* ボタンのパディング */
     font-size: 1rem; /* ボタンのフォントサイズ */
     cursor: pointer; /* カーソルをポインタに変更 */
 }
-
 
 /*
 #controls label {
