@@ -23,6 +23,14 @@ body {
 /*    margin-top: 10px;*/
 }
 
+#controls button {
+    margin-left: 15px; /* ボタンとその他の要素との間隔 */
+    padding: 5px 5px; /* ボタンのパディング */
+    font-size: 1rem; /* ボタンのフォントサイズ */
+    cursor: pointer; /* カーソルをポインタに変更 */
+}
+
+
 /*
 #controls label {
     margin-right: 20px; /* ラベルとスライダーの間隔 */

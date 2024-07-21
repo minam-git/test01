@@ -14,6 +14,7 @@ var canvas = document.getElementById('stage')
 var ctx = canvas.getContext('2d')
 var lineWidthInput = document.getElementById('lineWidth');
 var lineWidthValue = document.getElementById('lineWidthValue');
+var clearCanvasButton = document.getElementById('clearCanvas');
 
 function resize() {
 	canvas.setAttribute('width', window.innerWidth*2)
@@ -37,6 +38,16 @@ lineWidthInput.addEventListener('input', (event) => {
     ctx.lineWidth = event.target.value;
     lineWidthValue.textContent = event.target.value;
 });
+
+// キャンバスをクリアする関数
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// キャンバスをクリアするボタンのイベントリスナー
+clearCanvasButton.addEventListener('click', clearCanvas);
+
+
 
 
 function drawStart(event) {
