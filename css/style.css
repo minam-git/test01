@@ -23,7 +23,7 @@ body {
 /*    margin-top: 10px;*/
 }
 
-
+/*
 #controls label {
     margin-right: 20px; /* ラベルとスライダーの間隔 */
 }
@@ -31,6 +31,7 @@ body {
 #controls span {
     margin-right: 10px; /* スライダーと値の間隔 */
 }
+*/
 
 canvas {
 /*    border: 1px solid black; */
