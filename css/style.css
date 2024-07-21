@@ -17,9 +17,9 @@ body {
 #controls {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     width: auto;
-    height: 10%;
+    height: auto;
 /*    margin-top: 10px;*/
 }
 
