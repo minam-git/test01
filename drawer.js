@@ -16,6 +16,9 @@ var lineWidthInput = document.getElementById('lineWidth');
 var lineWidthValue = document.getElementById('lineWidthValue');
 var clearCanvasButton = document.getElementById('clearCanvas');
 
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
 function resize() {
 	canvas.setAttribute('width', window.innerWidth*2)
 	canvas.setAttribute('height', window.innerHeight*2)
