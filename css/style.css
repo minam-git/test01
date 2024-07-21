@@ -25,8 +25,8 @@ body {
 
 #controls button {
     margin-left: 2px; /* ボタンとその他の要素との間隔 */
-    margin-right: 12px; /* ボタンとその他の要素との間隔 */
-    padding: 5px 5px; /* ボタンのパディング */
+    margin-right: 5px; /* ボタンとその他の要素との間隔 */
+    padding: 2px 2px; /* ボタンのパディング */
     font-size: 1rem; /* ボタンのフォントサイズ */
     cursor: pointer; /* カーソルをポインタに変更 */
 }
