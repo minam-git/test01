@@ -4,12 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="manifest" href="manifest.json">
-<title>PWA Sample</title>
+<title>Rainbow Draw</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<canvas id="stage"></canvas>
-<script src="drawer.js"></script>
+    <div id="controls">
+        <label for="lineWidth">線の太さ: </label>
+		<span id="lineWidthValue">1</span>
+        <input type="range" id="lineWidth" name="lineWidth" min="1" max="10" value="5">
+    </div>
+    <canvas id="stage"></canvas>
+    <script src="drawer.js"></script>
+
+
 <script>
 // ServiceWorker登録：https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
 if ('serviceWorker' in navigator) {
@@ -20,5 +27,12 @@ if ('serviceWorker' in navigator) {
 	});
 }
 </script>
+
+
 </body>
 </html>
+
+
+
+
+

@@ -12,21 +12,33 @@ var hue = 0
 var hue2 = 0;
 var canvas = document.getElementById('stage')
 var ctx = canvas.getContext('2d')
+var lineWidthInput = document.getElementById('lineWidth');
+var lineWidthValue = document.getElementById('lineWidthValue');
+
 function resize() {
 	canvas.setAttribute('width', window.innerWidth*2)
 	canvas.setAttribute('height', window.innerHeight*2)
 	ctx.font = '30px serif'
 	ctx.fillText('Rainbow Draw', 20, 40)
-//	ctx.font = '25px serif'
-//	ctx.fillText('マウスや指タッチで線が描けるよ！', 15, 80)
-	ctx.lineWidth = 10
+	ctx.lineWidth = lineWidthInput.value;
 	ctx.scale(2, 2)
+	    // 初期の線の太さを表示
+    lineWidthValue.textContent = lineWidthInput.value;
 }
+
 resize()
 window.addEventListener('resize', resize)
 window.addEventListener('orientationchange', resize)
 canvas.addEventListener('mousedown', drawStart, false)
 canvas.addEventListener('touchstart', drawStart, false)
+
+// 線の太さが変更されたときのイベントリスナー
+lineWidthInput.addEventListener('input', (event) => {
+    ctx.lineWidth = event.target.value;
+    lineWidthValue.textContent = event.target.value;
+});
+
+
 function drawStart(event) {
 	event.preventDefault()
 	drawing = true
@@ -65,6 +77,7 @@ function drawLine(event) {
     last_x = x;
     last_y = y;
 }
+
 canvas.addEventListener('mouseup', drawFinish, false)
 canvas.addEventListener('touchend', drawFinish, false)
 function drawFinish() {
