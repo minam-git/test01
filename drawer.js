@@ -48,8 +48,10 @@ function clearCanvas() {
 }
 
 // キャンバスをクリアするボタンのイベントリスナー
-clearCanvasButton.addEventListener('click', clearCanvas);
-
+clearCanvasButton.addEventListener('click', (event) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    lineWidthValue.textContent = canvas.width
+});
 
 
 
