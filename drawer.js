@@ -15,9 +15,10 @@ var ctx = canvas.getContext('2d')
 var lineWidthInput = document.getElementById('lineWidth');
 var lineWidthValue = document.getElementById('lineWidthValue');
 var clearCanvasButton = document.getElementById('clearCanvas');
+var blackCanvasButton = document.getElementById('blackCanvas');
 
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+canvas.width = canvas.offsetWidth;		/* この初期化をしないとスマホではClearButtonでクリアされない */
+canvas.height = canvas.offsetHeight;
 
 function resize() {
 	canvas.setAttribute('width', window.innerWidth*2)
@@ -42,15 +43,18 @@ lineWidthInput.addEventListener('input', (event) => {
     lineWidthValue.textContent = event.target.value;
 });
 
-// キャンバスをクリアする関数
-function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
 
 // キャンバスをクリアするボタンのイベントリスナー
 clearCanvasButton.addEventListener('click', (event) => {
+//    ctx.fillStyle = 'black'; // 塗りつぶしの色を黒に設定
+//    ctx.fillRect(0, 0, canvas.width, canvas.height); // キャンバス全体を黒で塗りつぶす
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    lineWidthValue.textContent = canvas.width
+});
+
+blackCanvasButton.addEventListener('click', (event) => {
+    ctx.fillStyle = 'black'; // 塗りつぶしの色を黒に設定
+    ctx.fillRect(0, 0, canvas.width, canvas.height); // キャンバス全体を黒で塗りつぶす
+//    ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
 
