@@ -20,8 +20,16 @@ var clearCanvasButton = document.getElementById('clearCanvas');
 var blackCanvasButton = document.getElementById('blackCanvas');
 
 function resize() {
-	canvas.setAttribute('width', window.innerWidth*1)
-	canvas.setAttribute('height', window.innerHeight*1)
+/*
+	canvas.setAttribute('width', window.innerWidth*2)
+	canvas.setAttribute('height', window.innerHeight*2)
+*/
+   canvas.width = window.innerWidth * 1;
+   canvas.height = window.innerHeight * 1;
+   canvas.style.width = window.innerWidth + 'px';
+   canvas.style.height = window.innerHeight + 'px';	
+	
+	
 	ctx.font = '30px serif'
 	ctx.fillText('Rainbow Draw', 20, 40)
 	ctx.lineWidth = lineWidthInput.value;
@@ -71,9 +79,21 @@ canvas.addEventListener('touchmove', drawLine, false)
 function drawLine(event) {
 	if(!drawing) return
 	if(event.type==='touchmove') event = event.changedTouches[0]
-
+/*
     const x = event.pageX - canvas.offsetLeft;
     const y = event.pageY - canvas.offsetTop;
+*/
+		/* 画面上部にボタンを配置したため、↑ではポインタと描画の位置がずれる。その対策 */
+	    var rect = canvas.getBoundingClientRect();
+	    var scaleX = canvas.width / rect.width;
+	    var scaleY = canvas.height / rect.height;
+	    var offsetX = rect.left;
+	    var offsetY = rect.top;
+	  
+	    var x = (event.clientX - offsetX) * scaleX;
+	    var y = (event.clientY - offsetY) * scaleY;
+//
+
 
     // 色相を1度ずつ増やし、360度を超えたら0に戻す
     hue = ((hue + 8) % 360);
@@ -81,7 +101,7 @@ function drawLine(event) {
     ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
     ctx.beginPath();
-    if (flag1st ) {
+    if (flag1st) {
     	ctx.moveTo(last_x, last_y);
 	    ctx.lineTo(x, y);
     } else {
