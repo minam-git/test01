@@ -62,14 +62,24 @@ blackCanvasButton.addEventListener('click', (event) => {
 //    ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
-
-
 function drawStart(event) {
 	event.preventDefault()
 	drawing = true
 	flag1st = true
-	last_x = event.pageX- canvas.offsetLeft;
-	last_y = event.pageY - canvas.offsetTop;
+
+	if(event.type==='touchstart') event = event.changedTouches[0]
+	
+    let rect = canvas.getBoundingClientRect();
+
+	let scaleX = canvas.width / rect.width;
+	let scaleY = canvas.height / rect.height;
+	let offsetX = rect.left;
+	let offsetY = rect.top;
+
+//	last_x = event.pageX- canvas.offsetLeft;
+//	last_y = event.pageY - canvas.offsetTop;
+	last_x = (event.clientX - offsetX) * scaleX;
+	last_y = (event.clientY - offsetY) * scaleY;
 	last2_x = last_x
 	last2_y = last_y
 }
@@ -84,11 +94,11 @@ function drawLine(event) {
     const y = event.pageY - canvas.offsetTop;
 */
 		/* 画面上部にボタンを配置したため、↑ではポインタと描画の位置がずれる。その対策 */
-	    var rect = canvas.getBoundingClientRect();
-	    var scaleX = canvas.width / rect.width;
-	    var scaleY = canvas.height / rect.height;
-	    var offsetX = rect.left;
-	    var offsetY = rect.top;
+	    let rect = canvas.getBoundingClientRect();
+	    let scaleX = canvas.width / rect.width;
+	    let scaleY = canvas.height / rect.height;
+	    let offsetX = rect.left;
+	    let offsetY = rect.top;
 	  
 	    var x = (event.clientX - offsetX) * scaleX;
 	    var y = (event.clientY - offsetY) * scaleY;
